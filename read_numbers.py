@@ -33,5 +33,4 @@ def split_numbers(fh):
     line_chart(line_1, line_2)
 
 with open('example.txt', 'r') as fh:
-    coordinates = []
     split_numbers(fh)
