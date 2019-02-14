@@ -6,9 +6,7 @@ def line_chart(line_1, line_2):
         coordinates_line_1 = []
         for x_axis, y_axis in enumerate(line_1):
             coordinate = [x_axis, y_axis]
-            print(coordinate[0], coordinate[1])
             coordinates_line_1.append(coordinate)
-        print(coordinates_line_1)
         plt.plot([coordinate[0] for coordinate in coordinates_line_1],\
                  [coordinate[1] for coordinate in coordinates_line_1])
 
@@ -16,9 +14,7 @@ def line_chart(line_1, line_2):
         coordinates_line_2 = []
         for x_axis, y_axis in enumerate(line_2):
             coordinate = [x_axis, y_axis]
-            print(coordinate[0], coordinate[1])
             coordinates_line_2.append(coordinate)
-        print(coordinates_line_2)
 
         plt.plot([coordinate[0] for coordinate in coordinates_line_2],\
                  [coordinate[1] for coordinate in coordinates_line_2])
