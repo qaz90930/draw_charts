@@ -1,37 +1,43 @@
 import matplotlib.pyplot as plt
 
-def line_chart(line_1, line_2):
 
-    def draw_line_1(line_1):
-        coordinates_line_1 = []
-        for x_axis, y_axis in enumerate(line_1):
-            coordinate = [x_axis, y_axis]
-            coordinates_line_1.append(coordinate)
-        plt.plot([coordinate[0] for coordinate in coordinates_line_1],\
-                 [coordinate[1] for coordinate in coordinates_line_1])
+def draw_single_line(line):
+    coordinates = []
+    print(line)
+    for x_axis, y_axis in enumerate(line):
+        coordinate = [x_axis, y_axis]
+        coordinates.append(coordinate)
+    # print(coordinates)
+    plt.plot([coordinate[0] for coordinate in coordinates], \
+             [coordinate[1] for coordinate in coordinates])
 
-    def draw_line_2(line_2):
-        coordinates_line_2 = []
-        for x_axis, y_axis in enumerate(line_2):
-            coordinate = [x_axis, y_axis]
-            coordinates_line_2.append(coordinate)
 
-        plt.plot([coordinate[0] for coordinate in coordinates_line_2],\
-                 [coordinate[1] for coordinate in coordinates_line_2])
-        plt.show()
+def draw_lines(lines):
+    print("   ")
+    print(lines)
+    for line in lines:
+        draw_single_line(line)
+    plt.show()
 
-    draw_line_1(line_1)
-    draw_line_2(line_2)
 
 def split_numbers(fh):
-    line_1 = []
-    line_2 = []
+    lines = None  # don't know how many columns we need
+
     for line in fh:
-        column_1, column_2= line.split(',')
-        line_1.append(int(column_1))
-        line_2.append(int(column_2))
-    line_chart(line_1, line_2)
+        row = line.split(',')
+        # Now we know know how many columns
+        if lines is None:
+            lines = []
+            # For each column, add empty array
+            for i in range(0, len(row)):
+                lines.append([])
+
+        # For each cell, add to the right column in lines
+        for column, cell in enumerate(row):
+            lines[column].append(int(cell))
+
+    draw_lines(lines)
+
 
 with open('example.txt', 'r') as fh:
-    coordinates = []
     split_numbers(fh)
