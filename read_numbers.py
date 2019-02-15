@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 
 def draw_single_line(line):
     coordinates = []
-    print(line)
     for x_axis, y_axis in enumerate(line):
         coordinate = [x_axis, y_axis]
         coordinates.append(coordinate)
@@ -13,8 +12,6 @@ def draw_single_line(line):
 
 
 def draw_lines(lines):
-    print("   ")
-    print(lines)
     for line in lines:
         draw_single_line(line)
     plt.show()
